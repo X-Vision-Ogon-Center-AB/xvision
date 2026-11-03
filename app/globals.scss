@@ -1,0 +1,158 @@
+@import url("https://use.typekit.net/qnl0pvt.css");
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+html {
+  scrollbar-width: none;
+  scroll-behavior: smooth;
+}
+
+.button {
+  border-radius: 27px;
+  padding: 10px 25px;
+  font-size: 18px;
+  transition: all 0.5s;
+
+  @media screen and (max-width: 768px) {
+    width: 100%;
+    text-align: center;
+  }
+}
+
+h1 {
+  font-size: 65px;
+  line-height: 70px;
+  font-family: "freight-text-pro", serif;
+
+  @media screen and (max-width: 768px) {
+    font-size: 45px;
+    line-height: 50px;
+  }
+}
+
+h2 {
+  @media screen and (max-width: 768px) {
+    line-height: 45px;
+    font-size: 35px;
+  }
+}
+
+h2,
+button,
+h3,
+a {
+  font-family: "freight-text-pro", serif;
+}
+
+h4,
+h5,
+p,
+span,
+textarea,
+input,
+label {
+  font-family: "open-sans", sans-serif;
+}
+
+.open-sans {
+  font-family: "open-sans", sans-serif !important;
+
+  a {
+    font-family: "open-sans", sans-serif !important;
+  }
+}
+
+.form {
+  label {
+    font-size: 18px;
+    margin-bottom: 10px;
+  }
+
+  input,
+  textarea {
+    border: 2px solid #a9c1bd;
+    padding: 10px 20px;
+    border-radius: 10px;
+  }
+
+  .checkbox {
+    width: 50px;
+  }
+
+  button {
+    background: #cfedc6;
+    padding: 10px 20px;
+    min-width: 150px;
+    margin-top: 35px !important;
+    font-weight: 600;
+  }
+
+  .terms {
+    font-size: 14px;
+  }
+
+  textarea {
+    width: 100%;
+  }
+}
+
+.header {
+  background: #fff;
+}
+
+.font_overwrite {
+  font-family: "freight-text-pro", serif;
+
+  p,
+  a,
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    font-family: "freight-text-pro", serif;
+  }
+}
+
+.light {
+  font-weight: 100 !important;
+}
+
+input[type="checkbox"] {
+  accent-color: #1d383f;
+}
+
+input[type="checkbox"] {
+  height: 30px;
+  width: 30px;
+}
+
+.list {
+  list-style: circle;
+}
+
+.global-form {
+  label {
+    margin-top: 10px;
+  }
+}
+
+input[type="date"]:not(.has-value):before {
+  color: lightgray;
+  content: attr(placeholder);
+}
+
+.partial-content {
+  p {
+    font-size: 14px;
+  }
+}
+
+.render-content {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
