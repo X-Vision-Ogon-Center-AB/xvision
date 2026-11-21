@@ -1,3 +1,4 @@
+import { buildAlternates } from "@/lib/seo";
 import { Metadata } from "next";
 import {
   GetGenerlSettings,
@@ -26,6 +27,7 @@ export const generateMetadata = async ({
     title: res.data.data.story?.content?.SEO_Title || "XVISION",
     description:
       res.data.data.story?.content?.SEO_Meta || "Default description",
+    alternates: buildAlternates(pathname === undefined ? "/" : `/${pathname}`),
   };
 };
 

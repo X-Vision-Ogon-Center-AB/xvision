@@ -20,6 +20,7 @@ import { FaqBlock } from "./FAQ-block";
 import { Progress } from "./progress";
 import { Newsletter } from "./newsletter";
 import { Video } from "./video-block";
+import { YouTubeVideo } from "./youtube-video";
 
 storyblokInit({
   components: {
@@ -41,6 +42,7 @@ storyblokInit({
     progress: Progress,
     newsletter: Newsletter,
     video: Video,
+    youtube_video: YouTubeVideo,
   },
   enableFallbackComponent: true,
 });

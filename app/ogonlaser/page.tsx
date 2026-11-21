@@ -1,3 +1,4 @@
+import { buildAlternates } from "@/lib/seo";
 import Hero from "../components/ArkivPage/Hero";
 import BeforeAfter from "../components/Blocks/BeforeAfter/BeforeAfter";
 import ContactForm from "../components/Blocks/ContactForm/ContactForm";
@@ -23,6 +24,7 @@ export const generateMetadata = async ({
   return {
     title: res?.story?.content?.SEO_Title || "XVISION",
     description: res?.story?.content?.SEO_Meta || "Default description",
+    alternates: buildAlternates("/ogonlaser"),
   };
 };
 

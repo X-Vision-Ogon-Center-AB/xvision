@@ -3,7 +3,7 @@
 import React, { useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
-import { FaFacebook, FaInstagram } from "react-icons/fa";
+import { FaFacebook, FaInstagram, FaYoutube } from "react-icons/fa";
 import { RiArrowDownSLine, RiArrowUpSLine } from "react-icons/ri";
 
 export default function FooterSection({ props, lang }: any) {
@@ -11,7 +11,7 @@ export default function FooterSection({ props, lang }: any) {
   const [isDropdownOpenKontakt, setIsdropDownOpenKontakt] = useState(false);
   const {
     story: {
-      content: { footer_logo, footer_image, footer_menu_1, footer_menu_2, IG, FB },
+      content: { footer_logo, footer_image, footer_menu_1, footer_menu_2, IG, FB, YT },
     },
   } = props;
 
@@ -85,11 +85,19 @@ export default function FooterSection({ props, lang }: any) {
             </Link>
           </div>
           <div className="flex space-x-4 mt-4 justify-center lg:justify-normal">
-            <Link href={FB.url}>
+            <Link href={FB.url} aria-label="Facebook">
               <FaFacebook size={25} />
             </Link>
-            <Link href={IG.url}>
+            <Link href={IG.url} aria-label="Instagram">
               <FaInstagram size={25} />
+            </Link>
+            <Link
+              href={YT?.url || "https://www.youtube.com/@xvisionkliniken"}
+              aria-label="YouTube"
+              target="_blank"
+              rel="noopener"
+            >
+              <FaYoutube size={25} />
             </Link>
           </div>
         </div>

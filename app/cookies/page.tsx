@@ -1,3 +1,4 @@
+import { buildAlternates } from "@/lib/seo";
 import dynamic from "next/dynamic";
 import Image from "next/image";
 const CookieConsent = dynamic(() => import("../components/CookieConsent"), {
@@ -13,3 +14,7 @@ const Cookies = () => {
 };
 
 export default Cookies;
+
+export const generateMetadata = async () => ({
+  alternates: buildAlternates("/cookies"),
+});

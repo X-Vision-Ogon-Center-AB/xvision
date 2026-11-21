@@ -1,3 +1,4 @@
+import { buildAlternates } from "@/lib/seo";
 import Hero from "@/app/components/ArkivPage/Hero";
 import BeforeAfter from "@/app/components/Blocks/BeforeAfter/BeforeAfter";
 import ContactForm from "@/app/components/Blocks/ContactForm/ContactForm";
@@ -9,6 +10,7 @@ import Uspar from "@/app/components/Blocks/Uspar/Uspar";
 import { GetBehandlingarSlug, GetGenerlSettings } from "@/app/lib/apireq";
 const lang = `${process.env.STORYBLOCK_LANG}`;
 import { Metadata } from "next";
+import { LiteYouTube } from "@/components/youtube-video";
 
 export const generateMetadata = async ({
   params,
@@ -21,6 +23,7 @@ export const generateMetadata = async ({
   return {
     title: res?.story?.content?.SEO_Title || "XVISION",
     description: res?.story?.content?.SEO_Meta || "Default description",
+    alternates: buildAlternates(`/ogonoperationer/${pathname}`),
   };
 };
 
@@ -51,6 +54,11 @@ const page = async ({ params }: { params: { slug: string } }) => {
         content={slugData.a_content}
         slug_name={data.story.name}
       />
+      {slugData.youtube_url && (
+        <div className="container mx-auto my-14 px-4 lg:px-0 max-w-4xl">
+          <LiteYouTube url={slugData.youtube_url} title={slugData.youtube_title} />
+        </div>
+      )}
       <Uspar props={slugData.Uspar} />
       <CTA props={slugData.CTA} />
       {hasContent && (

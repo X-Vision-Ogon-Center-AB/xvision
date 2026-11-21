@@ -1,9 +1,10 @@
+import { STORYBLOK_VERSION } from "@/lib/storyblok-version";
 import { getStoryblokApi } from "@storyblok/react";
 import { redirect } from "next/navigation";
 
 export async function GetOgonOperationer() {
   let sbParams = {
-    version: "draft" as const,
+    version: STORYBLOK_VERSION,
     starts_with: "ogonoperationer",
     token: process.env.STORYBLOK_TOKEN,
     language: process.env.STORYBLOCK_LANG,
@@ -29,7 +30,7 @@ export async function GetOgonOperationer() {
 
 export async function GetLinsOperationer() {
   let sbParams = {
-    version: "draft" as const,
+    version: STORYBLOK_VERSION,
     starts_with: "linsoperationer",
     token: process.env.STORYBLOK_TOKEN,
     language: process.env.STORYBLOCK_LANG,
@@ -55,7 +56,7 @@ export async function GetLinsOperationer() {
 
 export const GetAllLinsOperations = async () => {
   let sbParams = {
-    version: "draft" as const,
+    version: STORYBLOK_VERSION,
     starts_with: "linsoperationer",
     token: process.env.STORYBLOK_TOKEN,
     language: process.env.STORYBLOCK_LANG,
@@ -81,7 +82,7 @@ export const GetAllLinsOperations = async () => {
 
 export const getAllPosts = async () => {
   let sbParams = {
-    version: "draft" as const,
+    version: STORYBLOK_VERSION,
     starts_with: "blog",
     token: process.env.STORYBLOK_TOKEN,
     language: process.env.STORYBLOCK_LANG,
@@ -145,7 +146,7 @@ export const GetGenerlSettings = async () => {
 
 export const GetOgonLaser = async () => {
   let sbParams = {
-    version: "draft" as const,
+    version: STORYBLOK_VERSION,
     token: process.env.STORYBLOK_TOKEN,
     language: process.env.STORYBLOCK_LANG,
   };
@@ -170,7 +171,7 @@ export const GetOgonLaser = async () => {
 
 export const GetLinsOperation = async () => {
   let sbParams = {
-    version: "draft" as const,
+    version: STORYBLOK_VERSION,
     token: process.env.STORYBLOK_TOKEN,
     language: process.env.STORYBLOCK_LANG,
   };
@@ -196,7 +197,7 @@ export const GetLinsOperation = async () => {
 
 export const GetBlog = async (slug: string) => {
   let sbParams = {
-    version: "draft" as const,
+    version: STORYBLOK_VERSION,
     token: process.env.STORYBLOK_TOKEN,
     language: process.env.STORYBLOCK_LANG,
   };
@@ -221,7 +222,7 @@ export const GetBlog = async (slug: string) => {
 
 export const GetBehandlingarSlug = async (slug: string) => {
   let sbParams = {
-    version: "draft" as const,
+    version: STORYBLOK_VERSION,
     token: process.env.STORYBLOK_TOKEN,
     language: process.env.STORYBLOCK_LANG,
   };
@@ -249,7 +250,7 @@ export const GetBehandlingarSlug = async (slug: string) => {
 
 export const GetLinsBehandlingarSlug = async (slug: string) => {
   let sbParams = {
-    version: "draft" as const,
+    version: STORYBLOK_VERSION,
     token: process.env.STORYBLOK_TOKEN,
     language: process.env.STORYBLOCK_LANG,
   };
