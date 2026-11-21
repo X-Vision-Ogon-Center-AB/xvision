@@ -1,3 +1,4 @@
+import { buildAlternates } from "@/lib/seo";
 import Link from "next/link";
 import { getAllPosts } from "../lib/apireq";
 
@@ -63,3 +64,7 @@ const page = async () => {
 };
 
 export default page;
+
+export const generateMetadata = async () => ({
+  alternates: buildAlternates("/blog"),
+});

@@ -6,6 +6,7 @@ import { apiPlugin, storyblokInit } from "@storyblok/react";
 import { StoryblokProvider } from "@/components/StoryblokProvider";
 import { Metadata } from "next";
 import { getData } from "@/lib/get-data";
+import { currentLang } from "@/lib/seo";
 
 export const generateMetadata = async ({
   params,
@@ -47,11 +48,9 @@ export default function RootLayout({
 }>) {
   return (
     <StoryblokProvider>
-      <html lang={process.env.STORYBLOCK_LANG}>
+      <html lang={currentLang()}>
         <head>
-          <link rel="alternate" href="https://www.xvisionkliniken.se/" hrefLang="sv-SE" />
-          <link rel="alternate" href="https://www.xvisionkliniken.dk/" hrefLang="da-DK" />
-          <link rel="alternate" href="https://xvisionclinic.com/" hrefLang="en" />
+          {/* hreflang + canonical are set per page via generateMetadata (lib/seo.ts) */}
           <script
             dangerouslySetInnerHTML={{
               __html: `

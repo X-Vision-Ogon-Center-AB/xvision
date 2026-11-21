@@ -1,3 +1,4 @@
+import { buildAlternates, languagesFrom } from "@/lib/seo";
 
 import Hero from "@/app/components/ArkivPage/Hero";
 import ImageBlock from "@/app/components/Blocks/ImageBlock/ImageBlock";
@@ -16,6 +17,7 @@ export const generateMetadata = async ({
   return {
     title: res?.story?.content?.SEO_Title || "XVISION",
     description: res?.story?.content?.SEO_Meta || "Default description",
+    alternates: buildAlternates(`/blog/${pathname}`, languagesFrom(res?.story?.content?.show_in_languages)),
   };
 };
 

@@ -1,3 +1,4 @@
+import { buildAlternates } from "@/lib/seo";
 import Hero from "@/app/components/ArkivPage/Hero";
 import ContactForm from "@/app/components/Blocks/ContactForm/ContactForm";
 import CTA from "@/app/components/Blocks/CTA/CTA";
@@ -22,6 +23,7 @@ export const generateMetadata = async ({
   return {
     title: res?.story?.content?.SEO_Title || "XVISION",
     description: res?.story?.content?.SEO_Meta || "Default description",
+    alternates: buildAlternates("/linsoperation"),
   };
 };
 
