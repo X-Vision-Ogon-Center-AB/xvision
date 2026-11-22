@@ -15,7 +15,9 @@ export const HeroHome = ({
   no_image_hero,
   uspar,
   heroHome,
+  headingLevel = 1,
 }: any) => {
+  const Heading = headingLevel === 1 ? "h1" : "h2";
   return (
     <div>
       {!opacity && (
@@ -45,13 +47,13 @@ export const HeroHome = ({
                 {subtitle}
               </h2>
             )}
-            <h1
+            <Heading
               className={`mb-4 text-[35px] lg:text-[62px] lg:max-w-[100%]  ${
                 !no_image_hero ? "pt-14" : "mx-auto"
               }`}
             >
               {title}
-            </h1>
+            </Heading>
             <p
               className={`text-lg mb-6 ${
                 no_image_hero && "max-w-[100%] lg:max-w-[85%] mx-auto"

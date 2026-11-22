@@ -1,7 +1,7 @@
 import Hero from "@/app/components/Blocks/Hero/Hero";
 import { storyblokEditable } from "@storyblok/react";
 
-export const HeroComponent = ({ blok }: any) => {
+export const HeroComponent = ({ blok, headingLevel }: any) => {
   return (
     <div {...storyblokEditable}>
       <Hero
@@ -19,6 +19,7 @@ export const HeroComponent = ({ blok }: any) => {
         mobile_img={blok.mobile_img}
         heroHome={blok.heroHome}
         heroOmoss={blok.heroOmoss}
+        headingLevel={headingLevel}
       />
     </div>
   );
