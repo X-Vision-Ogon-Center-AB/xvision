@@ -225,6 +225,9 @@ const Form = ({ lang }: any) => {
 
       if (response.ok) {
         setStatus("success");
+        // Lead signal for Google Tag Manager (TikTok pixel etc.). No personal data.
+        (window as any).dataLayer = (window as any).dataLayer || [];
+        (window as any).dataLayer.push({ event: "xv_lead", form_type: "forundersokning" });
         setSent(true);
       } else {
         setStatus("error");
