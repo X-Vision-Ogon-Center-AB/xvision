@@ -1,5 +1,6 @@
 "use client";
 
+import { localHref } from "@/lib/routes";
 import Image from "next/image";
 import Link from "next/link";
 import { render } from "storyblok-rich-text-react-renderer";
@@ -53,7 +54,7 @@ const ImageBlock = ({ props, lang, isimg }: ImageBlockProps) => {
             <div className="mt-5">
               {props?.button && props.button && (
                 <Link
-                  href={props?.link?.cached_url.replace(/\/(da|en)\//, "/") || "/"}
+                  href={localHref(props?.link?.cached_url)}
                   className="border-[#1D383F] border text-center button mt-5 text-[18px] hover:bg-[#1D383F] hover:text-white"
                 >
                   {props.button}
@@ -90,7 +91,7 @@ const ImageBlock = ({ props, lang, isimg }: ImageBlockProps) => {
             </span>
             {props?.button && props?.button && (
               <Link
-                href={props?.link?.cached_url.replace(/\/(da|en)\//, "/") || "/"}
+                href={localHref(props?.link?.cached_url)}
                 className="border-[#1D383F] border max-w-[350px] text-center button mt-5 hover:bg-[#1D383F] hover:text-white"
               >
                 {props?.button}

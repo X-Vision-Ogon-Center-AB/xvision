@@ -1,5 +1,6 @@
 "use client";
 
+import { localHref } from "@/lib/routes";
 import Link from "next/link";
 import scss from "./arkivpage.module.scss";
 
@@ -34,7 +35,7 @@ const Hero = ({ title, content, bg, btns, subtitle }: Hero) => {
                   key={index}
                   href={`${
                     el.link.linktype === "story"
-                      ? `${el.link.cached_url.replace(/\/(da|en)\//, "/")}`
+                      ? localHref(el.link.cached_url)
                       : `/${el.link.url}`
                   }`}
                   className={`button ${

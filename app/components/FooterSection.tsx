@@ -1,5 +1,6 @@
 "use client";
 
+import { localHref } from "@/lib/routes";
 import React, { useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
@@ -8,6 +9,12 @@ import { RiArrowDownSLine, RiArrowUpSLine } from "react-icons/ri";
 
 export default function FooterSection({ props, lang }: any) {
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
+  const t =
+    lang === "da"
+      ? { clinic: "X-Vision Øjenklinik", org: "Org.nr. (SE)", phone: "Telefon", contact: "Kontakt", rights: "X-Vision Øjenklinik. Alle rettigheder forbeholdes." }
+      : lang === "en"
+        ? { clinic: "X-Vision Eye Clinic", org: "Company reg. no. (SE)", phone: "Phone", contact: "Contact", rights: "X-Vision Eye Clinic. All rights reserved." }
+        : { clinic: "X-Vision Ögonklinik", org: "Org.nr", phone: "Telefon", contact: "Kontakt", rights: "X-Vision Ögonklinik. Alla rättigheter förbehållna." };
   const [isDropdownOpenKontakt, setIsdropDownOpenKontakt] = useState(false);
   const {
     story: {
@@ -47,7 +54,7 @@ export default function FooterSection({ props, lang }: any) {
         <div className="flex flex-col gap-4">
           <div>
             <h3 className="font-semibold mb-1 text-[24px]">
-              X-Vision Ögonklinik Malmö
+              {t.clinic} Malmö
             </h3>
             <p>Hyllie Stationstorg 2</p>
             <p>215 32 Malmö</p>
@@ -55,7 +62,7 @@ export default function FooterSection({ props, lang }: any) {
 
           <div>
             <h3 className="font-semibold mb-1 text-[24px]">
-              X-Vision Ögonklinik Lund
+              {t.clinic} Lund
             </h3>
             <p>Stora Södergatan 57A</p>
             <p>222 23 Lund</p>
@@ -66,16 +73,16 @@ export default function FooterSection({ props, lang }: any) {
               X-Vision Eye Center Hellerup
             </h3>
             <p>Strandvejen 88</p>
-            <p>2900 Hellerup (Denmark)</p>
+            <p>2900 Hellerup{lang === "da" ? "" : lang === "en" ? " (Denmark)" : " (Danmark)"}</p>
           </div>
 
-          <p className="mt-4">Org. Nr: 559001-0178</p>
+          <p className="mt-4">{t.org}: 559001-0178</p>
           <div className="flex flex-col">
             <Link
               href={`tel:+46103001008`}
               className="open-sans hover:opacity-70"
             >
-              Telefon +46103001008
+              {t.phone} +46 10 300 10 08
             </Link>
             <Link
               href={`mailto:info@xvisionkliniken.se`}
@@ -130,7 +137,7 @@ export default function FooterSection({ props, lang }: any) {
               <li key={i} className="text-[22px]">
                 <Link
                   href={`${item.link.linktype === "story"
-                    ? `/${item.link.cached_url.replace(/\/(da|en)\//, "")}`
+                    ? localHref(item.link.cached_url)
                     : item.link.url
                     }`}
                 >
@@ -148,7 +155,7 @@ export default function FooterSection({ props, lang }: any) {
             lg:items-start justify-center lg:justify-start ml-10 lg:ml-0 gap-2 lg:gap-0"
             onClick={toggleDropdownContact}
           >
-            {lang === "da" ? "Kontakte" : lang === "en" ? "Contact" : "Kontakt"}
+            {t.contact}
             <RiArrowDownSLine
               fontSize={40}
               className={` ${!isDropdownOpenKontakt ? "block lg:hidden" : "hidden"
@@ -164,15 +171,12 @@ export default function FooterSection({ props, lang }: any) {
             className={`${isDropdownOpenKontakt ? "flex" : "hidden"
               } md:flex flex-col`}
           >
-            <Link href="/gratis-forundersokning" className="">
+            <Link href={localHref("gratis-forundersokning")} className="">
               {lang === "da"
                 ? "Book en gratis konsultation"
                 : lang === "en"
                   ? "Book a free consultation"
                   : "Boka fri konsultation"}
-            </Link>
-            <Link href="/privacy-policy" className="mt-4">
-              Privacy policy
             </Link>
             <Link href="/cookies" className="mt-4">
               Cookies
@@ -181,7 +185,7 @@ export default function FooterSection({ props, lang }: any) {
               <li key={i} className="text-[22px] list-none mt-4">
                 <Link
                   href={`${item.link.linktype === "story"
-                    ? `/${item.link.cached_url.replace(/\/(da|en)\//, "")}`
+                    ? localHref(item.link.cached_url)
                     : item.link.url
                     }`}
                 >
@@ -228,7 +232,7 @@ export default function FooterSection({ props, lang }: any) {
             className="mx-auto lg:mx-0"
             alt="logo"
           />
-          <span> © 2025 X-Vision Ögonklinik. All rights reserved</span>
+          <span>© {new Date().getFullYear()} {t.rights}</span>
         </div>
       </div>
     </footer>

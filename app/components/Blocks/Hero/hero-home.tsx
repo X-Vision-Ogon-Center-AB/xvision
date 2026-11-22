@@ -1,4 +1,5 @@
 "use client";
+import { localHref } from "@/lib/routes";
 import { render } from "storyblok-rich-text-react-renderer";
 import Link from "next/link";
 import { GoDotFill } from "react-icons/go";
@@ -72,7 +73,7 @@ export const HeroHome = ({
                     key={index}
                     href={`${
                       el.link.linktype === "story"
-                        ? `${el.link.cached_url.replace(/\/(da|en)\//, "/")}`
+                        ? localHref(el.link.cached_url)
                         : `${el.link.url}`
                     }`}
                     className={`button transition-all duration-300 ${

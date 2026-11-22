@@ -5,7 +5,7 @@ import {
   GetLinsOperationer,
   GetOgonOperationer,
 } from "../lib/apireq";
-import { notFound } from "next/navigation";
+import { notFound, permanentRedirect } from "next/navigation";
 import StoryblokStory from "@storyblok/react/story";
 import { getData } from "@/lib/get-data";
 import { Popup } from "../components/popup";
@@ -38,6 +38,10 @@ const Page = async ({ params }: { params: { slug: string } }) => {
   const generalSetting = await GetGenerlSettings();
 
   const pathname = params.slug;
+  // /home is the start page under another address, and /generalsettings holds
+  // site settings, not a page. Neither should be reachable on its own.
+  if (pathname === "home") permanentRedirect("/");
+  if (pathname === "generalsettings") notFound();
   const slugName = pathname === undefined ? `home` : pathname;
 
   const story = await getData(slugName);
