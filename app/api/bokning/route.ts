@@ -1,11 +1,12 @@
 import { Resend } from "resend";
+import { sendLeadToHubSpot } from "@/lib/hubspot";
 
 const usermail = process.env.MARKNAD_EMAIL;
 // Created on demand so the build does not need RESEND_API_KEY (preview deployments may not have it).
 const getResend = () => new Resend(process.env.RESEND_API_KEY);
 
 export async function POST(req: Request) {
-  const { name, email, message, phone, tid, beskriv, synfel, operationType, questions, initialQuestion } =
+  const { name, email, message, phone, tid, beskriv, synfel, operationType, questions, initialQuestion, attribution } =
     await req.json();
 
   const formattedQuestions = questions
@@ -47,6 +48,16 @@ export async function POST(req: Request) {
     if (error) {
       return Response.json({ error }, { status: 500 });
     }
+
+    // Contact details + traffic source only; health answers stay in the e-mail above.
+    await sendLeadToHubSpot({
+      name,
+      email,
+      phone,
+      formType: "forundersokning",
+      treatmentText: operationType,
+      attribution,
+    });
 
     return Response.json(data);
   } catch (error) {

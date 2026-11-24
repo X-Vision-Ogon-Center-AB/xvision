@@ -3,6 +3,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import { useState } from "react";
+import { getAttribution } from "@/lib/attribution";
 
 export default function ContactForm({ global, lang }: any) {
   const [sent, setSent] = useState(false);
@@ -30,7 +31,7 @@ export default function ContactForm({ global, lang }: any) {
         headers: {
           "Content-Type": "application/json",
         },
-        body: JSON.stringify(formData),
+        body: JSON.stringify({ ...formData, attribution: getAttribution() }),
       });
 
       if (response.ok) {
