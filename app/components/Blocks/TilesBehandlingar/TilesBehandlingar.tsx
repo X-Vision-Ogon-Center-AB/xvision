@@ -61,7 +61,7 @@ export default function TilesBehandlingar({
                       width={50}
                       height={50}
                       className="mx-auto mb-10"
-                      alt="icon"
+                      alt=""
                     />
                   )}
                   <h3 className="text-xl font-normal mb-4">
@@ -96,7 +96,7 @@ export default function TilesBehandlingar({
                     width={34}
                     height={50}
                     className="mx-auto mb-10"
-                    alt="icon"
+                    alt=""
                   />
                 )}
                 <h3 className="text-xl font-normal mb-4">

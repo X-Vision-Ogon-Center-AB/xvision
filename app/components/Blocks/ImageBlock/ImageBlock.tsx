@@ -1,5 +1,6 @@
 "use client";
 
+import { altFor } from "@/lib/image-alt";
 import { localHref } from "@/lib/routes";
 import Image from "next/image";
 import Link from "next/link";
@@ -23,15 +24,17 @@ const ImageBlock = ({ props, lang, isimg }: ImageBlockProps) => {
       : props.image?.filename || "/fallback-image.jpg"
     : "/fallback-image.jpg";
 
-  const imageAlt = props
-    ? lang === "da" && props.image_da?.alt
-      ? props.image_da.alt
-      : lang === "en" && props.image_en?.alt
-      ? props.image_en.alt
-      : lang === "sv" && props.image_sv?.alt
-      ? props.image_sv.alt
-      : props.image?.alt || "Default image"
-    : "Default image";
+  // Alt text belongs to the image actually shown, in the site's language.
+  const shownImage = props
+    ? lang === "da" && props.image_da?.filename
+      ? props.image_da
+      : lang === "en" && props.image_en?.filename
+      ? props.image_en
+      : lang === "sv" && props.image_sv?.filename
+      ? props.image_sv
+      : props.image
+    : null;
+  const imageAlt = altFor(shownImage);
 
   return (
     <div className="flex justify-center max-w-[100%] lg:max-w-[80%] m-auto">

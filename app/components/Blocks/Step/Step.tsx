@@ -26,10 +26,10 @@ const Step = ({ props }: any) => {
             {index < props.steps.length - 1 && index !== 2 && (
               <div className="absolute top-1/2 -right-[70px] transform -translate-y-1/2 hidden lg:block">
                 <Image
-                  src="https://a.storyblok.com/f/304820/55x55/2637293a82/group-1562.svg"
+                  src="/icons/step.svg"
                   width={55}
                   height={55}
-                  alt="step-icon"
+                  alt=""
                 />
               </div>
             )}

@@ -1,5 +1,6 @@
 "use client";
 
+import { altFor } from "@/lib/image-alt";
 import Image from "next/image";
 import React from "react";
 
@@ -24,7 +25,7 @@ export default function PartnerLogos({ images, lang, title }: any) {
                 src={item.filename}
                 width={150}
                 height={20}
-                alt={item.alt}
+                alt={altFor(item)}
                 className="w-[343px] h-[40px] object-contain"
               />
             ))}

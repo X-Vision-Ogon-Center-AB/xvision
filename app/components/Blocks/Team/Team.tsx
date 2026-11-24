@@ -1,3 +1,4 @@
+import { altFor } from "@/lib/image-alt";
 import Image from "next/image";
 
 const Team = ({ props }: any) => {
@@ -14,7 +15,7 @@ const Team = ({ props }: any) => {
               {item.img.filename ? (
                 <Image
                   src={item?.img?.filename}
-                  alt={item.img.alt}
+                  alt={altFor(item?.img)}
                   width={311}
                   height={382}
                 />

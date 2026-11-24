@@ -1,5 +1,6 @@
 "use client";
 
+import { altFor } from "@/lib/image-alt";
 import Image from "next/image";
 import Link from "next/link";
 
@@ -41,7 +42,7 @@ const CTA = ({ props }: CTA) => {
       >
         <Image
           src={item.bg_image.filename}
-          alt={item.bg_image.alt}
+          alt={altFor(item.bg_image)}
           fill
           className={`object-cover left-0 ${
             item?.mobileimage?.filename && "hidden lg:block"
@@ -50,7 +51,7 @@ const CTA = ({ props }: CTA) => {
         {item?.mobileimage?.filename && (
           <Image
             src={item?.mobileimage?.filename}
-            alt={item.bg_image.alt}
+            alt={altFor(item?.mobileimage?.filename ? item.mobileimage : item.bg_image)}
             fill
             className={`object-cover left-0 ${
               item?.mobileimage?.filename && "block lg:hidden"
@@ -62,7 +63,7 @@ const CTA = ({ props }: CTA) => {
         <div className="w-1/2 h-full relative hidden lg:block">
           <Image
             src={item.bg_image_2.filename}
-            alt={item.bg_image_2.alt}
+            alt={altFor(item.bg_image_2)}
             fill
             className="object-cover w-1/2 left-0"
           />
