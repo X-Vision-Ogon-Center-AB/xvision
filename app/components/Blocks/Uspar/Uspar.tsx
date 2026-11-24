@@ -1,7 +1,7 @@
 "use client";
 
 import { GoDotFill } from "react-icons/go";
-import { render } from "storyblok-rich-text-react-renderer";
+import { render } from "@/lib/rich-text";
 
 const Uspar = ({ props }: any) => {
   return (

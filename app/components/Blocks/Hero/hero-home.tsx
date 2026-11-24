@@ -1,6 +1,6 @@
 "use client";
 import { localHref } from "@/lib/routes";
-import { render } from "storyblok-rich-text-react-renderer";
+import { render } from "@/lib/rich-text";
 import Link from "next/link";
 import { GoDotFill } from "react-icons/go";
 

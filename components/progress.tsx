@@ -1,5 +1,5 @@
 import React from "react";
-import { render } from "storyblok-rich-text-react-renderer";
+import { render } from "@/lib/rich-text";
 
 const ProgressBar = ({
   current,

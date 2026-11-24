@@ -1,5 +1,5 @@
 import { IoWarningOutline } from "react-icons/io5";
-import { render } from "storyblok-rich-text-react-renderer";
+import { render } from "@/lib/rich-text";
 
 export const PartialPayment = ({ blok }: any) => {
   return (

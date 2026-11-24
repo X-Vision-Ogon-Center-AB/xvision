@@ -1,6 +1,6 @@
 "use client";
 
-import { render } from "storyblok-rich-text-react-renderer";
+import { render } from "@/lib/rich-text";
 import scss from './columnbox.module.scss';
 
 const ColumnBox = ({ props }: any) => {

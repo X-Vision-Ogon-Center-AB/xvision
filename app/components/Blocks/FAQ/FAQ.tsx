@@ -1,7 +1,7 @@
 "use client";
 import Image from "next/image";
 import { useEffect } from "react";
-import { render } from "storyblok-rich-text-react-renderer";
+import { render } from "@/lib/rich-text";
 
 interface FAQ {
   props: any;
