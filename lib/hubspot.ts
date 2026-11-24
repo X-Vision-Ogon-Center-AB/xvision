@@ -10,8 +10,8 @@ import type { Attribution } from "./attribution";
  *
  * Env:
  *   HUBSPOT_PORTAL_ID   e.g. 149211981
- *   HUBSPOT_FORM_GUID   GUID of the HubSpot form "Webbformulär – hemsidan"
- *   HUBSPOT_FORMS_HOST  optional, default api.hsforms.com
+ *   HUBSPOT_FORM_GUID   GUID of the HubSpot form "Webbformulär – hemsidan (API)": e539a5ce-1bd3-4cac-8335-61a14b16bff2
+ *   HUBSPOT_FORMS_HOST  optional, default api-eu1.hsforms.com (EU data centre)
  * If PORTAL_ID or FORM_GUID is missing, nothing is sent (the e-mail still goes out).
  */
 
@@ -50,7 +50,7 @@ function clean(v?: string, max = 255): string | undefined {
 export async function sendLeadToHubSpot(lead: WebsiteLead): Promise<void> {
   const portal = process.env.HUBSPOT_PORTAL_ID;
   const form = process.env.HUBSPOT_FORM_GUID;
-  const host = process.env.HUBSPOT_FORMS_HOST || "api.hsforms.com";
+  const host = process.env.HUBSPOT_FORMS_HOST || "api-eu1.hsforms.com";
   const email = clean(lead.email);
   if (!portal || !form || !email) return;
 
