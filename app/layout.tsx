@@ -2,6 +2,7 @@ import "./globals.scss";
 import Footer from "./components/Footer";
 import Header from "./components/Header";
 import Script from "next/script";
+import LeadTracking from "./components/LeadTracking";
 import { apiPlugin, storyblokInit } from "@storyblok/react";
 import { StoryblokProvider } from "@/components/StoryblokProvider";
 import { Metadata } from "next";
@@ -82,6 +83,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe>`,
           <Header lang={process.env.STORYBLOCK_LANG} />
           {children}
           <Footer lang={process.env.STORYBLOCK_LANG} />
+          <LeadTracking />
         </body>
       </html>
     </StoryblokProvider>

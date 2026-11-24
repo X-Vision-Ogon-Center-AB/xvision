@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import scss from "./forundersokning.module.scss";
+import { getAttribution } from "@/lib/attribution";
 
 const Form = ({ lang }: any) => {
   const [sent, setSent] = useState(false);
@@ -212,6 +213,7 @@ const Form = ({ lang }: any) => {
       ...formData,
       questions: formattedQuestions,
       initialQuestion: formattedInitialQuestion,
+      attribution: getAttribution(),
     };
 
     try {
