@@ -63,11 +63,11 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
             }}
           />
           <link rel="stylesheet" href="https://use.typekit.net/qnl0pvt.css" />
-          <Script src="https://consent.cookiebot.com/uc.js" />
           <script
             id="Cookiebot"
             src="https://consent.cookiebot.com/uc.js"
             data-cbid="d966ab86-14d2-42ab-9df9-ebbffc2988a1"
+            data-culture={currentLang()}
             type="text/javascript"
             async
           ></script>
