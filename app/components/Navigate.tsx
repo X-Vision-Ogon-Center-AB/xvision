@@ -8,7 +8,7 @@ import NavDots from "./Blocks/NavDots/NavDots";
 import useStore from "../lib/store";
 import { useState } from "react";
 import { IoChevronBack, IoChevronForward } from "react-icons/io5";
-import { render } from "storyblok-rich-text-react-renderer";
+import { render } from "@/lib/rich-text";
 import scss from "./navigate.module.scss";
 import { FaFacebook, FaInstagram } from "react-icons/fa";
 

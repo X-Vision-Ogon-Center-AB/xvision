@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import { render } from "storyblok-rich-text-react-renderer";
+import { render } from "@/lib/rich-text";
 
 /**
  * Extracts the 11-character YouTube video id from any common link format:

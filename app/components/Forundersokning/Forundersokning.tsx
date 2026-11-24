@@ -1,7 +1,7 @@
 "use client";
 
 import Form from "./Form";
-import { render } from "storyblok-rich-text-react-renderer";
+import { render } from "@/lib/rich-text";
 
 const Forundersokning = ({ props, lang, headingLevel = 1 }: any) => {
   const Heading = headingLevel === 1 ? "h1" : "h2";

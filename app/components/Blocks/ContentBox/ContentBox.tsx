@@ -1,4 +1,4 @@
-import { render } from "storyblok-rich-text-react-renderer";
+import { render } from "@/lib/rich-text";
 import scss from "./contentbox.module.scss";
 
 const ContentBox = ({ props }: any) => {

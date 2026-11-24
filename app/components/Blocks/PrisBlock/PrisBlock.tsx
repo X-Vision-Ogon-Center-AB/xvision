@@ -3,7 +3,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import { IoMdCheckmark } from "react-icons/io";
-import { render } from "storyblok-rich-text-react-renderer";
+import { render } from "@/lib/rich-text";
 
 const PrisBlock = ({ props, lang }: any) => {
   return (

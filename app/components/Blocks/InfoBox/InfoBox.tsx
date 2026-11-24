@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { render } from "storyblok-rich-text-react-renderer";
+import { render } from "@/lib/rich-text";
 
 interface InfoBox {
   title?: string;

@@ -1,6 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
-import { render } from "storyblok-rich-text-react-renderer";
+import { render } from "@/lib/rich-text";
 import scss from "./aboutblock.module.scss";
 
 export default function AboutBlock({ props }: any) {
