@@ -1,5 +1,7 @@
 import type { MetadataRoute } from "next";
-import { RULES } from "../middleware";
+import { RULES } from "../lib/routes";
+
+const NON_PAGES = new Set(["generalsettings"]);
 
 type StoryblokStory = {
   full_slug?: string;
@@ -93,13 +95,15 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   }
 
   return stories
+    // Settings stories are not pages.
+    .filter((story) => !NON_PAGES.has(story.full_slug!.replace(/^(da|en)\//, "")))
     .map((story) => {
       const fullSlug = story.full_slug!;
       const internalSlug =
         language && fullSlug.startsWith(`${language}/`)
           ? fullSlug.slice(language.length + 1)
           : fullSlug;
-      const internalPath = `/${internalSlug}`;
+      const internalPath = internalSlug === "home" ? "/" : `/${internalSlug}`;
       const path = publicPathByInternalPath.get(internalPath) ?? internalPath;
       return {
         url: `${domain}${path}`,

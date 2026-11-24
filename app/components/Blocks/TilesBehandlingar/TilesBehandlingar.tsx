@@ -1,5 +1,6 @@
 "use client";
 
+import { localHref } from "@/lib/routes";
 import Image from "next/image";
 import Link from "next/link";
 import { useState } from "react";
@@ -50,7 +51,7 @@ export default function TilesBehandlingar({
               ?.slice(0, showAll ? 100 : 6)
               .map((op: any, index: number) => (
                 <Link
-                  href={`/${op.full_slug.replace(/^(da|en)\//, "")}`}
+                  href={localHref(op.full_slug)}
                   className={`lg:p-10 min-h-[390px] flex flex-col justify-center rounded-[37px] text-center mb-2 lg:mb-0 lg:m-2 bg-[#172D32] transition-all hover:bg-[#A9C1BD] hover:cursor-pointer`}
                   key={op.content._uid}
                 >
@@ -85,7 +86,7 @@ export default function TilesBehandlingar({
           <div className="grid mb-2 grid-cols-1 lg:grid-cols-3 items-center justify-center gap-5 text-white">
             {operations.map((op: any, index: number) => (
               <Link
-                href={`/${op.full_slug.replace(/^(da|en)\//, "")}`}
+                href={localHref(op.full_slug)}
                 className={`lg:p-10 min-h-[390px] flex flex-col justify-center rounded-[37px] text-center mb-2 lg:mb-0 lg:m-2 bg-[#172D32] transition-all hover:bg-[#A9C1BD] hover:cursor-pointer`}
                 key={op.content._uid}
               >
@@ -122,7 +123,7 @@ export default function TilesBehandlingar({
         <div className="flex justify-center">
           {props?.btn_link?.cached_url ? (
             <Link
-              href={`/${props.btn_link?.cached_url.replace(/\/(da|en)\//, "")}`}
+              href={localHref(props.btn_link?.cached_url)}
               className={`text-center mt-10 lg:mt-20 py-2 px-10 border font-normal hover:bg-[#1D383F] hover:text-white ${
                 props?.light_color ? "border-[#1D383F]" : "border-white"
               } rounded-[23px]`}

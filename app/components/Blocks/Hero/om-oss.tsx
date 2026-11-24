@@ -1,4 +1,5 @@
 "use client";
+import { localHref } from "@/lib/routes";
 import { render } from "storyblok-rich-text-react-renderer";
 import Link from "next/link";
 import { GoDotFill } from "react-icons/go";
@@ -14,7 +15,9 @@ export const OmOss = ({
   no_image_hero,
   uspar,
   heroOmOss,
+  headingLevel = 1,
 }: any) => {
+  const Heading = headingLevel === 1 ? "h1" : "h2";
   return (
     <div>
       {!opacity && (
@@ -44,13 +47,13 @@ export const OmOss = ({
                 {subtitle}
               </h2>
             )}
-            <h1
+            <Heading
               className={
                 "mb-4 text-[35px] mt-[-10%] lg:text-[62px] lg:max-w-[100%]"
               }
             >
               {title}
-            </h1>
+            </Heading>
             <p
               className={`text-lg mb-6 ${
                 no_image_hero && "max-w-[100%] lg:max-w-[85%] mx-auto"
@@ -72,7 +75,7 @@ export const OmOss = ({
                     key={index}
                     href={`${
                       el.link.linktype === "story"
-                        ? `${el.link.cached_url.replace(/\/(da|en)\//, "/")}`
+                        ? localHref(el.link.cached_url)
                         : `${el.link.url}`
                     }`}
                     className={`button transition-all duration-300 ${

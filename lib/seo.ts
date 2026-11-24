@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { RULES } from "../middleware";
+import { RULES } from "./routes";
 
 /**
  * Per-page canonical and hreflang tags for the three sites built from this repo.

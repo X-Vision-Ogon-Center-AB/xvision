@@ -1,5 +1,6 @@
 "use client";
 
+import { localHref } from "@/lib/routes";
 import Image from "next/image";
 import { render } from "storyblok-rich-text-react-renderer";
 import Link from "next/link";
@@ -22,6 +23,7 @@ interface HeroProps {
   mobile_img?: any;
   heroHome?: any;
   heroOmoss?: any;
+  headingLevel?: number;
 }
 
 const Hero = ({
@@ -39,7 +41,9 @@ const Hero = ({
   mobile_img,
   heroHome,
   heroOmoss,
+  headingLevel = 1,
 }: HeroProps) => {
+  const Heading = headingLevel === 1 ? "h1" : "h2";
   return (
     <section
       className={`${popup && `pt-14 ${uspar?.length < 0 && "pb-10"}`}  ${
@@ -83,6 +87,7 @@ const Hero = ({
           no_dots={no_dots}
           opacity={opacity}
           heroHome={heroHome}
+          headingLevel={headingLevel}
         />
       ) : heroOmoss ? (
         <OmOss
@@ -95,6 +100,7 @@ const Hero = ({
           no_dots={no_dots}
           opacity={opacity}
           heroHome={heroHome}
+          headingLevel={headingLevel}
         />
       ) : (
         <div>
@@ -125,13 +131,13 @@ const Hero = ({
                     {subtitle}
                   </h2>
                 )}
-                <h1
+                <Heading
                   className={`mb-4 text-[35px] lg:text-[62px] lg:max-w-[100%]  ${
                     !no_image_hero ? "pt-14" : "mx-auto"
                   }`}
                 >
                   {title}
-                </h1>
+                </Heading>
                 <p
                   className={`text-lg mb-6 ${
                     no_image_hero && "max-w-[100%] lg:max-w-[85%] mx-auto"
@@ -154,10 +160,7 @@ const Hero = ({
                           key={index}
                           href={`${
                             el.link.linktype === "story"
-                              ? `${el.link.cached_url.replace(
-                                  /\/(da|en)\//,
-                                  "/"
-                                )}`
+                              ? localHref(el.link.cached_url)
                               : `${el.link.url}`
                           }`}
                           className={`button transition-all duration-300 ${

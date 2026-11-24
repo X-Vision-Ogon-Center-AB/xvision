@@ -1,5 +1,6 @@
 "use client";
 
+import { localHref } from "@/lib/routes";
 import Image from "next/image";
 import Link from "next/link";
 import XVISION from "@/public/logo.png";
@@ -60,11 +61,11 @@ export default function Navigate({ props, ogonOperationer, linsOperation, lang }
             <Link
               key={menuItem._uid}
               className="text-black hover:text-[#1d383f] transition-all"
-              href={`/${
+              href={
                 menuItem.link.linktype === "story"
-                  ? `${menuItem.link.cached_url.replace(/\/(da|en)\//, "")}`
-                  : menuItem.link.url
-              }`}
+                  ? localHref(menuItem.link.cached_url)
+                  : menuItem.link.url || "/"
+              }
             >
               {menuItem.link_title}
             </Link>
@@ -144,11 +145,11 @@ export default function Navigate({ props, ogonOperationer, linsOperation, lang }
                   key={menuItem._uid}
                   onClick={() => isOpen(!open)}
                   className="hover:text-[#cfedc6]"
-                  href={`${
+                  href={
                     menuItem.link.linktype === "story"
-                      ? `${menuItem.link.cached_url.replace(/\/(da|en)\//, "")}`
-                      : `${menuItem.link.cached_url}`
-                  }`}
+                      ? localHref(menuItem.link.cached_url)
+                      : menuItem.link.cached_url || menuItem.link.url || "/"
+                  }
                 >
                   {menuItem.link_title}
                 </Link>
@@ -169,7 +170,7 @@ export default function Navigate({ props, ogonOperationer, linsOperation, lang }
               </Link>
             </div>
             <div className="flex flex-col text-[18px] mt-2 lg:mt-24">
-              <h3 className="font-semibold">{lang === "da" ? "Kontakte" : lang === "en" ? "Contact" : "Kontakt"}</h3>
+              <h3 className="font-semibold">{lang === "da" ? "Kontakt" : lang === "en" ? "Contact" : "Kontakt"}</h3>
               <div className="flex flex-col mt-2 font-light">
                 <Link href={`tel:${number}`}>{number}</Link>
                 <Link href={`mailto:${mail}`}>{mail}</Link>
@@ -222,7 +223,7 @@ export default function Navigate({ props, ogonOperationer, linsOperation, lang }
           >
             <Link
               onClick={() => isOpen(false)}
-              href={`/linsoperation`}
+              href={localHref("linsoperation")}
               className="hover:text-[#cfedc6] block lg:hidden"
             >
               {lang === "da" ? "Om Linseoperationer" : lang === "en" ? "About lens operations" : "Om Linsoperationer"}
@@ -231,7 +232,7 @@ export default function Navigate({ props, ogonOperationer, linsOperation, lang }
               return (
                 <Link
                   onClick={() => isOpen(false)}
-                  href={`/${el.full_slug.replace(/^(da|en)\//, "")}`}
+                  href={localHref(el.full_slug)}
                   key={index}
                   className="hover:text-[#cfedc6]"
                 >
@@ -245,7 +246,7 @@ export default function Navigate({ props, ogonOperationer, linsOperation, lang }
               !showOgon ? "translate-x-full" : "translate-x-0"
             }`}
           >
-            <Link onClick={() => isOpen(false)} href={`/ogonlaser`} className="hover:text-[#cfedc6] block lg:hidden">
+            <Link onClick={() => isOpen(false)} href={localHref("ogonlaser")} className="hover:text-[#cfedc6] block lg:hidden">
               {lang === "da"
                 ? "Om øjenoperationer"
                 : lang === "en"
@@ -256,7 +257,7 @@ export default function Navigate({ props, ogonOperationer, linsOperation, lang }
               return (
                 <Link
                   onClick={() => isOpen(false)}
-                  href={`/${el.full_slug.replace(/^(da|en)\//, "")}`}
+                  href={localHref(el.full_slug)}
                   key={index}
                   className="hover:text-[#cfedc6] normal-case"
                 >
