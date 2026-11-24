@@ -2,6 +2,11 @@ import { buildAlternates } from "@/lib/seo";
 import Link from "next/link";
 import { getAllPosts } from "../lib/apireq";
 
+// Always fetch the published Storyblok version so new posts and
+// translations show up immediately after publishing.
+export const dynamic = "force-dynamic";
+export const revalidate = 0;
+
 const rawLang = `${process.env.STORYBLOCK_LANG || "sv"}`;
 
 const lang =

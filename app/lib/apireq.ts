@@ -86,6 +86,7 @@ export const getAllPosts = async () => {
     starts_with: "blog",
     token: process.env.STORYBLOK_TOKEN,
     language: process.env.STORYBLOCK_LANG,
+    cv: Date.now(),
   };
 
   const client = getStoryblokApi();
@@ -200,6 +201,7 @@ export const GetBlog = async (slug: string) => {
     version: STORYBLOK_VERSION,
     token: process.env.STORYBLOK_TOKEN,
     language: process.env.STORYBLOCK_LANG,
+    cv: Date.now(),
   };
 
   const client = getStoryblokApi();
