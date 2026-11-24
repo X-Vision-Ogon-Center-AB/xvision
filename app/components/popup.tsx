@@ -1,5 +1,6 @@
 "use client";
 
+import { altFor } from "@/lib/image-alt";
 import React, { useState, useEffect } from "react";
 import { X } from "lucide-react";
 import { render } from "@/lib/rich-text";
@@ -156,7 +157,7 @@ const AutoPopup: React.FC<AutoPopupProps> = ({
               <Image
                 src={image || "/"}
                 fill
-                alt="image"
+                alt={altFor({ filename: image })}
                 className="object-cover rounded-t-lg md:rounded-l-lg md:rounded-t-none"
               />
             </div>

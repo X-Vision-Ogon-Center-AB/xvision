@@ -83,8 +83,8 @@ const FAQ = ({ props, title }: FAQ) => {
           >
             <div className="flex-shrink-0">
               <Image
-                src="https://a.storyblok.com/f/304820/55x55/f9892efa1d/group-1396.svg"
-                alt="FAQ"
+                src="/icons/faq.svg"
+                alt=""
                 className="lg:-mt-0 w-[55px]"
                 width={55}
                 height={50}

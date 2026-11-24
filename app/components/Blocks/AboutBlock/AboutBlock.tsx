@@ -1,3 +1,4 @@
+import { altFor } from "@/lib/image-alt";
 import Image from "next/image";
 import Link from "next/link";
 import { render } from "@/lib/rich-text";
@@ -19,7 +20,7 @@ export default function AboutBlock({ props }: any) {
           <span className="text-[#CFEDC6]">{props.dr}</span>
         </div>
         <div>
-          <Image src={props?.img?.filename} alt="" width={700} height={700} />
+          <Image src={props?.img?.filename} alt={altFor(props?.img)} width={700} height={700} />
         </div>
         <div className="flex text-[18px] flex-col ml-0 lg:ml-5 justify-end gap-5">
           <span className={scss.aboutcontent}>{render(props.content)}</span>
@@ -34,7 +35,7 @@ export default function AboutBlock({ props }: any) {
         <div />
         <Image
           src={props?.smallimg?.filename}
-          alt=""
+          alt={altFor(props?.smallimg)}
           width={400}
           height={700}
           className="mt-0 lg:-mt-44 ml-0 lg:-ml-28"

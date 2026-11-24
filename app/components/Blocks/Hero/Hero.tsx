@@ -1,5 +1,6 @@
 "use client";
 
+import { altFor } from "@/lib/image-alt";
 import { localHref } from "@/lib/routes";
 import Image from "next/image";
 import { render } from "@/lib/rich-text";
@@ -56,7 +57,7 @@ const Hero = ({
         <Image
           src={img?.filename}
           fill
-          alt={img?.alt}
+          alt={altFor(img)}
           className="hidden lg:block lg:object-cover object-top"
         />
       )}
@@ -65,7 +66,7 @@ const Hero = ({
         <Image
           src={mobile_img?.filename || img?.filename}
           fill
-          alt={mobile_img?.alt}
+          alt={altFor(mobile_img?.filename ? mobile_img : img)}
           className={`${
             heroHome
               ? "!h-[780px]"

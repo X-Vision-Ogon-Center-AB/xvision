@@ -1,5 +1,6 @@
 "use client";
 
+import { altFor } from "@/lib/image-alt";
 import { localHref } from "@/lib/routes";
 import Image from "next/image";
 import Link from "next/link";
@@ -53,7 +54,7 @@ export default function Navigate({ props, ogonOperationer, linsOperation, lang }
         />
       )}
       <Link className="flex items-center" href="/">
-        <Image src={logo.filename} width={150} height={50} alt={logo.alt} />
+        <Image src={logo.filename} width={150} height={50} alt={altFor(logo) || "X-Vision"} />
       </Link>
       <nav className="hidden md:flex items-center space-x-6">
         {Menu.map((menuItem: Menu) => {
@@ -103,7 +104,7 @@ export default function Navigate({ props, ogonOperationer, linsOperation, lang }
         } bg-[#172D32] transition-all duration-300 z-10 ${!open ? "translate-x-full" : "translate-x-0"} `}
       >
         <div className="flex w-full p-[17.8px] h-[90px] items-center justify-between bg-[#A9C1BD]">
-          {!showLinser && !showOgon && <Image src={XVISION} width={140} height={50} alt="XVISION" />}
+          {!showLinser && !showOgon && <Image src={XVISION} width={140} height={50} alt="X-Vision" />}
           {showLinser && (
             <Link href="" className="flex gap-2 items-center text-[17px] font-bold open-sans" onClick={handleLinser}>
               <IoChevronBack fontSize={20} />

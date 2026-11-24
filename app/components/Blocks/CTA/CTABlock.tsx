@@ -1,5 +1,6 @@
 "use client";
 
+import { altFor } from "@/lib/image-alt";
 import Image from "next/image";
 import Link from "next/link";
 
@@ -57,7 +58,7 @@ const CTABlock = ({
       >
         <Image
           src={bg_image?.filename}
-          alt={bg_image?.alt}
+          alt={altFor(bg_image)}
           fill
           quality={100}
           className={`object-cover left-0`}
@@ -67,7 +68,7 @@ const CTABlock = ({
         <div className="w-1/2 h-full relative hidden lg:block">
           <Image
             src={bg_image_2.filename}
-            alt={bg_image_2.alt}
+            alt={altFor(bg_image_2)}
             fill
             className="object-cover w-1/2 left-0"
           />

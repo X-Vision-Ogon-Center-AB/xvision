@@ -18,7 +18,7 @@ const LinsType = ({ props }: any) => {
             <div className="flex flex-col h-[270px] items-center justify-center gap-5 bg-[#1D383F] rounded-[37px] text-white">
               <Image
                 src={item.icon.filename}
-                alt={item.icon.filename}
+                alt=""
                 width={50}
                 height={50}
               />

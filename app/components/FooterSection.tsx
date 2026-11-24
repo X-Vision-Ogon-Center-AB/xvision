@@ -1,5 +1,6 @@
 "use client";
 
+import { altFor } from "@/lib/image-alt";
 import { localHref } from "@/lib/routes";
 import React, { useState } from "react";
 import Image from "next/image";
@@ -41,14 +42,14 @@ export default function FooterSection({ props, lang }: any) {
             src={footer_logo.filename}
             width={220}
             height={50}
-            alt={footer_logo.alt}
+            alt={altFor(footer_logo) || "X-Vision"}
           />
         </Link>
         <Image
           src={footer_image.filename}
           width={150}
           height={150}
-          alt={footer_image.alt}
+          alt=""
           className="absolute top-5 right-2 lg:right-10 lg:top-10 hidden lg:block"
         />
         <div className="flex flex-col gap-4">
@@ -209,7 +210,7 @@ export default function FooterSection({ props, lang }: any) {
           src={footer_image.filename}
           width={150}
           height={150}
-          alt={footer_image.alt}
+          alt=""
         />
       </div>
       {/* Bottom section */}
@@ -220,17 +221,17 @@ export default function FooterSection({ props, lang }: any) {
               src={footer_logo.filename}
               width={180}
               height={50}
-              alt={footer_logo.alt}
+              alt={altFor(footer_logo) || "X-Vision"}
             />
           </Link>
         </div>
         <div className="text-sm lg:absolute bottom-2 lg:bottom-5 lg:right-10 text-white flex flex-col gap-5 mt-5 lg:mt-0">
           <Image
-            src="https://a.storyblok.com/f/304820/272x42/44fd68df90/resurs_logo_horizontal_rgb_white-2x.png"
+            src="/icons/resurs-logo-white.png"
             width={150}
             height={50}
             className="mx-auto lg:mx-0"
-            alt="logo"
+            alt="Resurs Bank"
           />
           <span>© {new Date().getFullYear()} {t.rights}</span>
         </div>
