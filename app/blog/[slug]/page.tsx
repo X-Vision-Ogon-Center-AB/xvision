@@ -6,6 +6,11 @@ import { GetBlog } from "@/app/lib/apireq";
 const lang = `${process.env.STORYBLOCK_LANG}`;
 import { Metadata } from "next";
 
+// Always fetch the published Storyblok version so new posts and
+// translations show up immediately after publishing.
+export const dynamic = "force-dynamic";
+export const revalidate = 0;
+
 export const generateMetadata = async ({
   params,
 }: {
