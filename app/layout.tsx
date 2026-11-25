@@ -8,6 +8,7 @@ import { StoryblokProvider } from "@/components/StoryblokProvider";
 import { Metadata } from "next";
 import { getData } from "@/lib/get-data";
 import { currentLang } from "@/lib/seo";
+import { businessJsonLd } from "@/lib/business-jsonld";
 
 export const generateMetadata = async ({
   params,
@@ -73,6 +74,10 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
           ></script>
         </head>
         <body>
+          <script
+            type="application/ld+json"
+            dangerouslySetInnerHTML={{ __html: JSON.stringify(businessJsonLd()).replace(/</g, "\\u003c") }}
+          />
           <Script src={`https://www.google.com/recaptcha/api.js?render=${process.env.NEXT_SITE_CAPTCHA}`} />
           <noscript
             dangerouslySetInnerHTML={{
