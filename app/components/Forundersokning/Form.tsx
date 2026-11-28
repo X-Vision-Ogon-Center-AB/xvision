@@ -3,6 +3,7 @@
 import { useState } from "react";
 import scss from "./forundersokning.module.scss";
 import { getAttribution } from "@/lib/attribution";
+import { reportLead } from "@/lib/lead-thank-you";
 
 const Form = ({ lang }: any) => {
   const [sent, setSent] = useState(false);
@@ -226,10 +227,10 @@ const Form = ({ lang }: any) => {
       });
 
       if (response.ok) {
+        // Lead signal for Google Tag Manager. No personal data. On health pages the
+        // visitor is sent to the neutral thank-you page, where the signal fires instead.
+        if (reportLead("forundersokning")) return;
         setStatus("success");
-        // Lead signal for Google Tag Manager (TikTok pixel etc.). No personal data.
-        (window as any).dataLayer = (window as any).dataLayer || [];
-        (window as any).dataLayer.push({ event: "xv_lead", form_type: "forundersokning" });
         setSent(true);
       } else {
         setStatus("error");

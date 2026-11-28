@@ -4,6 +4,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { useState } from "react";
 import { getAttribution } from "@/lib/attribution";
+import { reportLead } from "@/lib/lead-thank-you";
 
 export default function ContactForm({ global, lang }: any) {
   const [sent, setSent] = useState(false);
@@ -35,10 +36,10 @@ export default function ContactForm({ global, lang }: any) {
       });
 
       if (response.ok) {
+        // Lead signal for Google Tag Manager. No personal data. On health pages the
+        // visitor is sent to the neutral thank-you page, where the signal fires instead.
+        if (reportLead("kontakt")) return;
         setStatus("success");
-        // Lead signal for Google Tag Manager (TikTok pixel etc.). No personal data.
-        (window as any).dataLayer = (window as any).dataLayer || [];
-        (window as any).dataLayer.push({ event: "xv_lead", form_type: "kontakt" });
         setSent(true);
       } else {
         setStatus("error");
